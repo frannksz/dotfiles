@@ -36,7 +36,7 @@ db.setup({
                 end,
             },
             {
-                icon = ' ',
+                icon = ' ',
                 desc = 'Find File           ',
                 key = 'f',
                 keymap = 'SPC f',
