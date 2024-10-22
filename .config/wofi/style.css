@@ -1,0 +1,54 @@
+window {
+    font-family: "DejaVu Sans", "Font Awesome 5 Free";
+    background-color: transparent; /* Use a cor de fundo */
+    border: 0.2rem solid var(--color4); /* Use a cor da borda */
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+window:focus {
+    opacity: 1;
+}
+
+.search {
+    background-color: var(--color8); /* Use a cor de fundo da busca */
+    border: 0.1rem solid var(--color1); /* Use a cor da borda da busca */
+    box-shadow: none;
+    color: var(--color7); /* Use a cor do texto da busca */
+    margin: 0 0 1.5rem 0;
+    padding: 0.75rem 0;
+}
+
+.search .left, .search .right {
+    color: transparent;
+}
+
+#outer-box {
+    margin: 1.5rem;
+}
+
+#inner-box {
+    margin: 0;
+}
+
+#entry {
+    border: 0.1rem solid transparent;
+    color: #ffffff; /* Use a cor do texto do entry */
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    transition: 0.1s ease;
+}
+
+#entry:selected {
+    background-color: var(--color2); /* Use a cor de fundo selecionada */
+    border-color: var(--color3); /* Use a cor da borda selecionada */
+    color: var(--color5); /* Use a cor do texto selecionado */
+}
+
+#entry .drun-icon {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
