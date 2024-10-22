@@ -166,14 +166,14 @@
     //"exec": "pgrep -x wf-recorder > /dev/null && echo '  Gravando...' || echo ''",
     "exec": "pgrep -x wf-recorder > /dev/null && echo '<span color=\"#F53C3C\"> Gravando...</span>' || echo ' '",
     "interval": 2,
-    "on-click": "/home/frank/.config/waybar/scripts/wfrecord.sh",
+    "on-click": "/home/franksz/.config/waybar/scripts/wfrecord.sh",
     "on-click-right": "pgrep -x wf-recorder > /dev/null && (killall wf-recorder && notify-send 'Wf-Recorder' 'Gravação finalizada')",
     "signal": 8,
     },
 
      "custom/screenshot": {
     "format": "{} ",
-    "on-click": "/home/frank/Scripts/screenshot.sh",
+    "on-click": "/home/franksz/Scripts/screenshot.sh",
     },
 
   "hyprland/window": {
