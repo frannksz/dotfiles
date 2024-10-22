@@ -114,7 +114,7 @@
 },
 
     "custom/colorpicker": {
-        "format": " 󰃉 ",
+        "format": " ",
         "tooltip": false,
         "on-click": "exec hyprpicker -ar",
     },
@@ -147,8 +147,8 @@
     "on-click": "$HOME/.config/hypr/scripts/toggle_mic.sh",
     "format": "{}",
     "format-icons": {
-      "on": " Microfone Ativado",
-      "off": " Microfone Mutado"
+      "on": "Microfone Ativado",
+      "off": "Microfone Mutado"
     },
   },
 
@@ -164,7 +164,7 @@
     "custom/recorder": {
     "format": "{}",
     //"exec": "pgrep -x wf-recorder > /dev/null && echo '  Gravando...' || echo ''",
-    "exec": "pgrep -x wf-recorder > /dev/null && echo '<span color=\"#F53C3C\"> Gravando...</span>' || echo ' '",
+    "exec": "pgrep -x wf-recorder > /dev/null && echo '<span color=\"#F53C3C\">   Gravando...</span>' || echo ' '",
     "interval": 2,
     "on-click": "/home/franksz/.config/waybar/scripts/wfrecord.sh",
     "on-click-right": "pgrep -x wf-recorder > /dev/null && (killall wf-recorder && notify-send 'Wf-Recorder' 'Gravação finalizada')",
