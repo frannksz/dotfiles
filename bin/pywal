@@ -64,8 +64,8 @@ while true ; do
     my_array=($HOME/Wallpapers/*)
     RANDOM_WALLPAPER="${my_array[$(( $RANDOM % ${#my_array[@]}))]}"
     wal -i "$RANDOM_WALLPAPER" && $HOME/.config/dunst/./launchdunst.sh && wal-telegram --wal && \
-    cat /home/frank/.cache/wal/colors-kitty.conf > ~/.config/kitty/theme.conf && \
-    cat /home/frank/.cache/wal/colors-rofi-dark.rasi > ~/.config/rofi/config.rasi
+    cat /home/franksz/.cache/wal/colors-kitty.conf > ~/.config/kitty/theme.conf && \
+    cat /home/franksz/.cache/wal/colors-rofi-dark.rasi > ~/.config/rofi/config.rasi
     
     update_hyprpaper "$RANDOM_WALLPAPER"
     read -p 'PRESS ENTER TO CONTINUE...' && continue
@@ -77,8 +77,8 @@ while true ; do
     
     if [[ -n "${array[@]}" ]]; then
       wal -i "${array[@]}" && $HOME/.config/dunst/./launchdunst.sh && wal-telegram --wal && \
-      cat /home/frank/.cache/wal/colors-kitty.conf > ~/.config/kitty/theme.conf && \
-      #cat /home/frank/.cache/wal/colors-rofi-dark.rasi > ~/.config/rofi/config.rasi
+      cat /home/franksz/.cache/wal/colors-kitty.conf > ~/.config/kitty/theme.conf && \
+      #cat /home/franksz/.cache/wal/colors-rofi-dark.rasi > ~/.config/rofi/config.rasi
       
       update_hyprpaper "${array[@]}"
     fi
@@ -86,7 +86,7 @@ while true ; do
 
   elif [ "$SELECTION" == '3' ] || [ "$SELECTION" == '03' ] ; then
     clear
-    wget -c "https://github.com/frannks/wallpack/archive/refs/heads/main.zip"
+    wget -c "https://github.com/frannksz/wallpack/archive/refs/heads/main.zip"
     unzip main.zip
     mv wallpack-main/* ~/Wallpapers/
     rm -rf main.zip wallpack-main
