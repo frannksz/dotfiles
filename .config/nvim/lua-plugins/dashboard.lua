@@ -15,7 +15,7 @@ db.setup({
         },
         center = {
             {
-                icon = ' ',
+                icon = ' ',
                 icon_hl = 'Title',
                 desc = 'New File            ',
                 desc_hl = 'String',
@@ -26,7 +26,7 @@ db.setup({
                 action = function() db.new_file() end,
             },
             {
-                icon = ' ',
+                icon = ' ',
                 desc = 'Browse Files        ',
                 key = 'b',
                 keymap = 'SPC n',
@@ -36,7 +36,7 @@ db.setup({
                 end,
             },
             {
-                icon = ' ',
+                icon = ' ',
                 desc = 'Find File           ',
                 key = 'f',
                 keymap = 'SPC f',
@@ -44,7 +44,7 @@ db.setup({
                 action = 'Telescope find_files',
             },
             {
-                icon = ' ',
+                icon = '󰧮 ',
                 desc = 'Old Files',
                 key = 'o',
                 keymap = 'SPC o',
@@ -53,7 +53,7 @@ db.setup({
             },
 
             {
-                icon = ' ',
+                icon = '󰃉 ',
                 desc = 'Configure Neovim    ',
                 key = 'c',
                 keymap = 'SPC v',
@@ -61,7 +61,7 @@ db.setup({
                 action = 'edit ~/.config/nvim/init.vim',
             },
             {
-                icon = ' ',
+                icon = '󰌍 ',
                 desc = 'Exit Neovim        ',
                 key = 'e',
                 keymap = 'SPC q',
