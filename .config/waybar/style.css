@@ -7,9 +7,9 @@
 
 * {
     border: none;
-    border-radius: 0px;
+    border-radius: 15px;
     /* Fonts: Iosevka, Roboto, Roboto Mono Medium, SourceCodeVF, Fira Code, Arial, Fantasque Sans Mono*/
-    font-family: "Roboto Mono Medium";
+    font-family: "JetBrainsMono Nerd Font";
     font-size: 12px;
     min-height: 0;
 }

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 # Verifica as atualizações disponíveis nos repositórios oficiais
@@ -19,8 +18,8 @@ if ! [[ $total_updates =~ $re ]] ; then
 fi
 
 if (( $total_updates > 0 )); then
-  echo " $total_updates atualizações disponíveis!!!"; exit 0
+  echo "󰏗 $total_updates update(s) available"; exit 0
 else
-  echo " O seu arch está atualizado!!!"; exit 0
+  echo "󰏖 arch is updated!"; exit 0
 fi
 

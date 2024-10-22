@@ -67,7 +67,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}%  "
+        "format": "{}%  "
     },
     
     "temperature": {
@@ -108,18 +108,18 @@
         },
 
     "custom/powermenu": {
-    "format": "  ",
+    "format": " ⏻ ",
     "tooltip": false,
     "on-click": "exec $HOME/.config/waybar/scripts/powermenu.sh",
 },
 
     "custom/colorpicker": {
-        "format": " ",
+        "format": " 󰃉 ",
         "tooltip": false,
         "on-click": "exec hyprpicker -ar",
     },
     "pulseaudio": {
-      "format": "{volume}% {icon}",
+      "format": "{volume}% {icon} ",
       "format-bluetooth": "{volume}% {icon}",
       "format-muted": "  ",
       "format-icons": {
@@ -153,7 +153,7 @@
   },
 
   "custom/spotify": {
-    "exec": "/usr/bin/python3 /home/frank/.config/waybar/scripts/mediaplayer.py --player spotify",
+    "exec": "/usr/bin/python3 /home/franksz/.config/waybar/scripts/mediaplayer.py --player spotify",
     "format": "{}   ",
     "return-type": "json",
     "on-click": "playerctl --player=spotify play-pause",
@@ -164,7 +164,7 @@
     "custom/recorder": {
     "format": "{}",
     //"exec": "pgrep -x wf-recorder > /dev/null && echo '  Gravando...' || echo ''",
-    "exec": "pgrep -x wf-recorder > /dev/null && echo '<span color=\"#F53C3C\">   Gravando...</span>' || echo ' '",
+    "exec": "pgrep -x wf-recorder > /dev/null && echo '<span color=\"#F53C3C\">󰯜 Gravando...</span>' || echo ' 󰕨 '",
     "interval": 2,
     "on-click": "/home/franksz/.config/waybar/scripts/wfrecord.sh",
     "on-click-right": "pgrep -x wf-recorder > /dev/null && (killall wf-recorder && notify-send 'Wf-Recorder' 'Gravação finalizada')",
