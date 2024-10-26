@@ -22,8 +22,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'preservim/nerdcommenter' "NerdCommenter
 Plug 'ryanoasis/vim-devicons' "Icons File Manager
 Plug 'preservim/nerdtree' "NerdTree
+Plug 'sheerun/vim-polyglot' "Syntax Check
 Plug 'tc50cal/vim-terminal' "Terminal
 Plug 'nvim-tree/nvim-web-devicons' "WebDevIcons
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' } "Bufferline
 Plug 'nvim-lualine/lualine.nvim' "Lualine
 Plug 'AlphaTechnolog/pywal.nvim', { 'as': 'pywal' } "LualinePywal
 Plug 'lukas-reineke/indent-blankline.nvim' "Indent Blank
@@ -35,11 +37,13 @@ Plug 'neovim/nvim-lspconfig' "Nvim-Lspconfig
 Plug 'williamboman/mason.nvim' "Nvim-mason
 Plug 'williamboman/mason-lspconfig.nvim' "Nvim-lspconfig-mason
 Plug 'rafamadriz/friendly-snippets' "SnippetsNeovim
-Plug 'wfxr/minimap.vim' "Minimap
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "CoC
+Plug 'wfxr/minimap.vim' "Code-Minimap
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "CoC-NeoVIM
 Plug 'nvim-lua/plenary.nvim' "Plenary
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' } "Telescope
+Plug 'nvim-telescope/telescope-file-browser.nvim' "Telescope-File-Browser
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "Nvim-Treesitter
+Plug 'terryma/vim-multiple-cursors' "Multiple Cursors
 
 " =======================================================
 "                           THEMES
@@ -60,6 +64,8 @@ Plug 'sho-87/kanagawa-paper.nvim'
 Plug 'sainnhe/sonokai'
 Plug 'qaptoR-nvim/chocolatier.nvim'
 Plug 'Mofiqul/dracula.nvim'
+Plug 'rktjmp/lush.nvim'
+Plug 'ntk148v/habamax.nvim'
 
 call plug#end()
 
@@ -84,6 +90,7 @@ set bg=dark "litght (Tema Claro), dark (Tema Escuro)
 "color chocolatier
 "color dracula
 "color dracula-soft
+"color habamax
 
 " =======================================================
 "                       CONFIGS NEOVIM
@@ -91,6 +98,7 @@ set bg=dark "litght (Tema Claro), dark (Tema Escuro)
 set cursorline
 "highlight clear CursorLine
 "highlight CursorLine ctermbg=235
+"set incsearch
 set tabstop=4
 set number
 set autoindent
@@ -111,16 +119,14 @@ set hidden
 set inccommand=split
 set clipboard=unnamedplus
 set incsearch ignorecase smartcase hlsearch
-set guifont=Fira\ Code:12
-"set incsearch
-"set encoding=UTF-8
-"set relativenumber
+set guifont=JetBrainsMono\ Nerd\ Font:12
+set relativenumber
 
 " =======================================================
 "                         NERDTREE
 " =======================================================
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
@@ -131,6 +137,13 @@ nnoremap <C-l> :NERDTreeToggle<CR>
 " =======================================================
 "                        OTHERS CONFIGS
 " =======================================================
+
+" Bufferline
+set termguicolors
+lua << EOF
+require"bufferline".setup{}
+EOF
+
 " Minimap
 let g:minimap_width = 10
 let g:minimap_auto_start = 0
@@ -144,6 +157,13 @@ EOF
 
 let mapleader="\<space>" "Leader Key
 
+"Adicionando ; no final da linha
+nnoremap <leader>; A;<esc>
+
+"Vsplit neovim config
+nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+
 "Terminal
 nnoremap <leader>t :vsplit term://zsh<cr>A
 
@@ -155,14 +175,14 @@ nmap <C-/> <Plug>NERDCommenterToggle
 xmap <C-/> <Plug>NERDCommenterToggle
 
 "Keyboard map
-map <C-t> :Themery<CR>
 map <C-p> :MasonUpdate<CR>
+map <C-t> :Themery<CR>
 map <C-m> :Mason<CR>
 map <C-b> :MinimapToggle<CR>
 map <C-q> :q!<CR>
-map <C-c> :Calendar<CR>
 map <C-s> :w!<CR>
-map <C-x> :s/$/
+"map <C-x> :s/$/
+
 map <F8> :colorscheme wal<CR>
 map q :q<CR>
 map r :PlugInstall<CR>
@@ -211,5 +231,4 @@ lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/lualine.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/colorizer.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/themery.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/dashboard.lua')
-"lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/bufferline.lua')
-"lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/blankline.lua')
+lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/bufferline.lua')

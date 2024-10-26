@@ -9,7 +9,7 @@
     border: none;
     border-radius: 15px;
     /* Fonts: Iosevka, Roboto, Roboto Mono Medium, SourceCodeVF, Fira Code, Arial, Fantasque Sans Mono*/
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "Fira Code";
     font-size: 12px;
     min-height: 0;
 }
@@ -313,6 +313,18 @@ window#waybar.empty #window {
     margin-right: 5px;
     padding: 0px 10px 0px 10px;
 }
+
+#custom-check_updates {
+    color: #444444;
+    background-color: #269cb6;
+    /*border-radius: 0px 0px 16px 0px;*/
+    border-radius: 20px;
+    margin: 0px 0px 0px 0px;
+    padding: 0 10px 0 10px;
+    /*border-right: solid 1px #282738;*/
+    /*font-size: 16px;*/
+}
+
 
 #disk {
     background-color: #444444;

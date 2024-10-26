@@ -2,5 +2,5 @@
   "pyright.inlayHints.functionReturnTypes": false,
   "pyright.inlayHints.variableTypes": true,
   "pyright.inlayHints.parameterTypes": true,
-  "snippets.ultisnips.pythonPrompt": false
-}
+  "snippets.ultisnips.pythonPrompt": false,
+  }
