@@ -4,144 +4,210 @@
 // ██║███╗██║██╔══██║  ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
 // ╚███╔███╔╝██║  ██║   ██║   ██████╔╝██║  ██║██║  ██║
 //  ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-                                                   
+
+// 					Franklin Souza
+//					   @franksz
 
 {
-    "layer": "bottom",
-    "position": "top",
-    "height": 30,
-    "spacing": 4,
-    "corner-radius": 5,
-    "margin-top": 5,
-    "margin-left": 40,
-    "margin-right": 40,
-    "margin-bottom": 0,
-    "modules-left": ["hyprland/workspaces", "custom/spotify", "hyprland/window"],
-    "modules-center": ["cpu", "memory", "temperature"],
-    "modules-right": ["custom/check_updates", "pulseaudio", "custom/colorpicker", "custom/mic_status", "custom/recorder", "custom/screenshot","clock", "tray", "custom/powermenu"],
+	"layer": "top",
+	"position": "top",
 
+	"modules-left": [
+		"hyprland/mode",
+		"hyprland/workspaces",
+		"hyprland/window"
+	],
 
-   "hyprland/workspaces": {
-      "format": "{icon}",
-      "format-icons": {
-        "1": "1",
-        "2": "2",
-        "3": "3",
-        "4": "4",
-        "5": "5",
-        "6": "6",
-        "7": "7",
-        "8": "8",
-        "9": "9",
-        "10": "10",
-        "-99": " ",
-        "active": "  ",
-        "default": ""
-      }
-    },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-    	  "timezone" : "America/Sao_Paulo",
-        "format": "  {:%I:%M %p}",
-        "format-alt": "  {:%a, %d %b %Y}",
-        "interval" : "60",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-     "calendar": {
-        "mode" : "year", // year(ano), month(mes)
-        "mode-mon-col" : 3,
-        "weeks-pos" : "none",
-        "format" : {
-            "months": "<span color='#ffffff'><b>{}</b></span>",
-            "days": "<span color='#ffffff'><b>{}</b></span>",
-            "weeks": "<span color='#EC3C3C'>W{}</span>",
-            "weekdays": "<span color='#EC3C3C'>{}</span>",
-            "today": "<span color='#EC3C3C'><b><u>{}</u></b></span>"
-        },
-    },
+	"modules-right": [
+		"custom/arrow9",
+		"pulseaudio",
+		"custom/arrow8",
+		"custom/check_updates",
+		"custom/arrow7",
+		"memory",
+		"custom/arrow6",
+		"cpu",
+		"custom/arrow5",
+		"temperature",
+		"custom/arrow4",
+		"custom/colorpicker",
+		"custom/screenshot",
+		"custom/mic_status",
+		"custom/recorder",
+		"custom/arrow3",
+		"hyprland/language",
+		"custom/arrow2",
+		"clock#date",
+		"custom/arrow1",
+		"clock#time",
+		"custom/powermenu",
+		"tray",
+	],
+
+	// Modules
+
+	"battery": {
+		"interval": 10,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format-time": "{H}:{M:02}",
+		"format": "{icon} {capacity}% ({time})",
+		"format-charging": " {capacity}% ({time})",
+		"format-charging-full": " {capacity}%",
+		"format-full": "{icon} {capacity}%",
+		"format-alt": "{icon} {power}W",
+		"format-icons": [
+			" ",
+			" ",
+			" ",
+			" ",
+			" "
+		],
+		"tooltip": false
 	},
-    "cpu": {
-        "format": "{usage}%  ",
+
+	"clock#time": {
+		"interval": 10,
+		"format": "{:%I:%M %p}",
+		"tooltip": false
+	},
+
+	"clock#date": {
+		"interval": 20,
+		"format": "{:%a  %e %b %Y}",
+		"tooltip": false
+		//"tooltip-format": "{:%e %B %Y}"
+	},
+
+	"cpu": {
+        "format": "   {usage}%",
         "tooltip": false
     },
-    "memory": {
-        "format": "{}%  "
-    },
-    
-    "temperature": {
-    "interval": 2,
-    "thermal-zone": 2,
-     "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-     "critical-threshold": 80,
-     "format-critical": "{temperatureC}°C {icon}",
-     "format": "{temperatureC}°C {icon}",
-     "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": [""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-        },
 
-    "custom/powermenu": {
-    "format": " ⏻ ",
-    "tooltip": false,
-    "on-click": "exec $HOME/.config/waybar/scripts/powermenu.sh",
-},
+	"hyprland/language": {
+		"format": "     {}",
+		"min-length": 5,
+		"on-click": "swaymsg 'pt-br'",
+		"tooltip": false
+	},
 
-    "custom/colorpicker": {
-        "format": " 󰃉 ",
-        "tooltip": false,
-        "on-click": "exec hyprpicker -ar",
-    },
-    "pulseaudio": {
-      "format": "{volume}% {icon} ",
-      "format-bluetooth": "{volume}% {icon}",
-      "format-muted": "  ",
-      "format-icons": {
-          "headphone": " ",
-          "hands-free": " ",
-          "headset": " ",
-          "phone": " ",
-          "portable": " ",
-          "car": " ",
-          "default": ["", ""]
-      },
-      "scroll-step": 1,
-      "on-click": "pavucontrol"
+	 "memory": {
+        "format": "    {}%"
     },
 
-    "custom/check_updates": {
-    "exec": "~/.config/waybar/scripts/./check_updates.sh",
-    "interval": 600,
-    "on-click": "kitty --hold bash -c 'sudo pacman -Sy && pacman -Qu'"
-  },
+	"network": {
+		"interval": 5,
+		"format-wifi": " {essid} ({signalStrength}%)",
+		"format-ethernet": " {ifname}",
+		"format-disconnected": "No connection",
+		"format-alt": " {ipaddr}/{cidr}",
+		"tooltip": false
+	},
 
-  "custom/mic_status": {
+	"hyprland/mode": {
+		"format": "{}",
+		"tooltip": false
+	},
+
+	"hyprland/window": {
+		"format": "{}",
+		"max-length": 30,
+		"tooltip": false
+	},
+
+	"hyprland/workspaces": {
+		"disable-scroll-wraparound": true,
+		"smooth-scrolling-threshold": 4,
+		"enable-bar-scroll": true,
+		"format": "{name}"
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": " Muted",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["    ", "    "]
+		},
+		"scroll-step": 1,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false
+	},
+
+	"temperature": {
+    	"interval": 2,
+     	"thermal-zone": 2,
+     	"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+     	"critical-threshold": 80,
+     	"format-critical": "{temperatureC}°C {icon}",
+     	"format": "{icon} {temperatureC}°C",
+     	"format-icons": ["", "", ""]
+    },
+
+	"tray": {
+		"icon-size": 18
+		//"spacing": 10
+	},
+
+	"custom/arrow1": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow2": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow3": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow4": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow5": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow6": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow7": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow8": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow9": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow10": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/mic_status": {
     "exec": "cat /tmp/mic_status",
     "interval": 1,
     "on-click": "$HOME/.config/hypr/scripts/toggle_mic.sh",
@@ -152,16 +218,7 @@
     },
   },
 
-  "custom/spotify": {
-    "exec": "/usr/bin/python3 /home/franksz/.config/waybar/scripts/mediaplayer.py --player spotify",
-    "format": "{}   ",
-    "return-type": "json",
-    "on-click": "playerctl --player=spotify play-pause",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"    
-    },
-
-    "custom/recorder": {
+  "custom/recorder": {
     "format": "{}",
     //"exec": "pgrep -x wf-recorder > /dev/null && echo '  Gravando...' || echo ''",
     "exec": "pgrep -x wf-recorder > /dev/null && echo '<span color=\"#F53C3C\">󰯜 Gravando...</span>' || echo ' 󰕨 '",
@@ -171,17 +228,29 @@
     "signal": 8,
     },
 
-     "custom/screenshot": {
-    "format": "{} ",
+	"custom/screenshot": {
+    "format": " {}",
     "on-click": "/home/franksz/Scripts/screenshot.sh",
     },
 
-  "hyprland/window": {
-	"format": "{}",
-	"rewrite": {
-                "(.*) - Chromium": "Chromium",
-		"(.*) - zsh": "> [$1]"
+	"custom/check_updates": {
+    	"exec": "~/.config/waybar/scripts/./check_updates.sh",
+    	"interval": 600,
+    	"on-click": "kitty --hold bash -c 'sudo pacman -Sy && pacman -Qu'"
+  	},
+  	"custom/powermenu": {
+    	"format": " ⏻ ",
+    	"tooltip": false,
+    	"on-click": "exec $HOME/.config/waybar/scripts/powermenu.sh",
 	},
-},
 
+	"custom/colorpicker": {
+        	"format": " 󰃉 ",
+        	"tooltip": false,
+        	"on-click": "exec hyprpicker -ar",
+
+	},
 }
+
+// vi:ft=jsonc
+

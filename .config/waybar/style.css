@@ -5,353 +5,313 @@
 /* ███████║   ██║      ██║   ███████╗███████╗██╗╚██████╗███████║███████║ */
 /* ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚═╝ ╚═════╝╚══════╝╚══════╝ */
 
+
+
+/* Keyframes */
+
+@keyframes blink-critical {
+	to {
+		/*color: @white;*/
+		background-color: @critical;
+	}
+}
+
+/* Styles */
+
+/* Colors (gruvbox) */
+@define-color black	#282828;
+@define-color red	#cc241d;
+@define-color green	#98971a;
+@define-color yellow	#d79921;
+@define-color blue	#458588;
+@define-color purple	#b16286;
+@define-color aqua	#689d6a;
+@define-color gray	#a89984;
+@define-color brgray	#928374;
+@define-color brred	#fb4934;
+@define-color brgreen	#b8bb26;
+@define-color bryellow	#fabd2f;
+@define-color brblue	#83a598;
+@define-color brpurple	#d3869b;
+@define-color braqua	#8ec07c;
+@define-color white	#ebdbb2;
+@define-color bg2	#504945;
+
+
+@define-color warning 	@bryellow;
+@define-color critical	@red;
+@define-color mode	@black;
+@define-color unfocused	@bg2;
+@define-color focused	@braqua;
+@define-color inactive	@purple;
+@define-color sound	@brpurple;
+@define-color network	@purple;
+@define-color check_updates	@purple;
+@define-color memory	@braqua;
+@define-color cpu	@green;
+@define-color temp	@brgreen;
+@define-color layout	@bryellow;
+@define-color battery	@aqua;
+@define-color colorpicker	@aqua;
+@define-color screenshot	@aqua;
+@define-color mic_status	@aqua;
+@define-color recorder	@aqua;
+@define-color date	#0F121B;
+@define-color time	@white;
+
+/* Reset all styles */
 * {
-    border: none;
-    border-radius: 15px;
-    /* Fonts: Iosevka, Roboto, Roboto Mono Medium, SourceCodeVF, Fira Code, Arial, Fantasque Sans Mono*/
-    font-family: "Fira Code";
-    font-size: 12px;
-    min-height: 0;
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
+	icon-shadow: none;
 }
 
-window#waybar {
-    background: transparent;
-    border-bottom: 0px solid #444444;
-    color: #f4d9e1
+/* The whole bar */
+#waybar {
+	/*background: rgba(40, 40, 40, 0.8784313725); [> #282828e0 <]*/
+	background: #0F101A;
+	color: @white;
+	font-family: JetBrains Mono, Siji;
+	font-size: 10pt;
+	/*font-weight: bold;*/
 }
 
-#workspaces {
-background: #444444;
-    margin: 5px 5px 5px 5px;
-border-radius: 16px;
-    font-size: 14px;
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#language,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#backlight,
+#idle_inhibitor,
+#disk,
+#user,
+#mpris
+#custom-recorder
+#custom-mic_status
+#custom-screenshot
+#custom-check_updates {
+	padding-left: 8pt;
+	padding-right: 8pt;
 }
 
+/* Each critical module */
+#mode,
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#battery.critical.discharging {
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: blink-critical;
+	animation-duration: 1s;
+}
+
+/* Each warning */
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning.discharging {
+	color: @warning;
+}
+
+/* And now modules themselves in their respective order */
+
+/* Current sway mode (resize etc) */
+#mode {
+	color: @white;
+	background: @mode;
+}
+
+/* Workspaces stuff */
 #workspaces button {
-    border: 0px;
-    margin:4px 5px 4px 0px;
-    padding: 0px 4px 0px 4px;
-    color: #f4d9e1;
-    transition: all 0.5s ease-in-out;
+	/*font-weight: bold;*/
+	padding-left: 2pt;
+	padding-right: 2pt;
+	color: @white;
+	background: @unfocused;
 }
 
-#workspaces button.active {
-    color: #269cb6;
-    background: transparent; /* substitua pelo valor correto */
+/* Inactive (on unfocused output) */
+#workspaces button.visible {
+	color: @white;
+	background: @inactive;
 }
 
+/* Active (on focused output) */
+#workspaces button.focused {
+	color: @black;
+	background: @focused;
+}
+
+/* Contains an urgent window */
+#workspaces button.urgent {
+	color: @black;
+	background: @warning;
+}
+
+/* Style when cursor is on the button */
 #workspaces button:hover {
-    color: #269cb6;
-    border-radius: 15px;
-}
-
-#custom-date, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher {
-    background: transparent;
-    padding: 5px 5px 5px 5px;
-    margin: 5px 5px 5px 5px;
-    border-radius: 8px;
-    border: solid 0px #f4d9e1;
-}
-
-#custom-date, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher {
-    background: transparent;
-    padding: 5px 5px 5px 5px;
-    margin: 5px 5px 5px 5px;
-    border-radius: 8px;
-    border: solid 0px #f4d9e1;
-}
-
-#custom-date {
-    color: #D3869B;
-}
-
-#custom-powermenu {
-    color: #f53c3c;
-    background-color: #444444;
-    border-radius: 5px;
-    margin-right: 0px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 0px;
-    padding: 5px 10px;
-}
-
-#clock {
-    background-color: #444444;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-
-#battery {
-    background-color: #444444;
-    /*color: #9ece6a;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#battery.charging {
-        background-color: #444444
-;
-    /*color: #9ece6a;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#battery.warning:not(.charging) {
-    background-color: #444444;
-    /*color: #9ece6a;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#backlight {
-    background-color: #24283b;
-    color: #db4b4b;
-    border-radius: 0px 0px 0px 0px;
-    margin: 5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px 0px;
-}
-
-#network {
-    background-color: #444444;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#pulseaudio {
-    background-color: #444444;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#pulseaudio.muted {
-    background-color: #444444;
-    color: #928374;
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#custom-randwall {
-    color: #f4d9e1;
-    border-radius: 8px;
-    margin-right: 0px;
-}
-
-#tray {
-    /*background-color: #269cb6;*/
-    background-color: transparent;
-    border-radius: 0px 0px 0px 24px;
-    margin: 0px 0px 0px 0px;
-    padding: 0 20px 0 13px;
-    /*border-right: solid 1px #282738;*/
-    font-size: 16px;
-}
-
-#custom-launcher {
-    color: #444444;
-    background-color: #269cb6;
-    border-radius: 0px 0px 24px 0px;
-    margin: 0px 0px 0px 0px;
-    padding: 0 13px 0 20px;
-    /*border-right: solid 1px #282738;*/
-    font-size: 16px;
-}
-
-#custom-launcher button:hover {
-    background-color: #FB4934;
-    color: transparent;
-    border-radius: 8px;
-    margin-right: -5px;
-    margin-left: 10px;
-}
-
-#custom-playerctl {
-    background: #444444;
-    padding-left: 15px;
-    padding-right: 14px;
-    border-radius: 16px;
-    /*border-left: solid 1px #282738;*/
-    /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 0px;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 16px;
-}
-
-#custom-playerlabel {
-    background: transparent;
-    padding-left: 10px;
-    padding-right: 15px;
-    border-radius: 16px;
-    /*border-left: solid 1px #282738;*/
-    /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-style: normal;
-    color: #282738;
+	background: @black;
+	color: @white;
 }
 
 #window {
-    background-color: #444444;
-    /*color: #FABD2D;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+	margin-right: 35pt;
+	margin-left: 35pt;
 }
 
-window#waybar.empty #window {
-    background-color:transparent;
+#pulseaudio {
+	background: @sound;
+	color: @black;
 }
 
-#cpu {
-    background-color: #444444;
-    /*color: #FABD2D;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#custom-mic_status {
-    background-color: #444444;
-    /*color: #FABD2D;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#custom-colorpicker {
-    background-color: #444444;
-    /*color: #FABD2D;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#custom-spotify {
-    background-color: #1DB954;
-    color: #FFFFFF;
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#custom-recorder {
-    background-color: #444444;
-    /*color: #FABD2D;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-#custom-screenshot {
-    background-color: #444444;
-    /*color: #FABD2D;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-}
-
-/* Adiciona um estilo opcional para quando não está gravando */
-#custom-recorder:not(.recording) {
-    background-color: #444444;
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+#network {
+	background: @network;
+	color: @white;
 }
 
 #memory {
-    background-color: #444444;
-    /*color: #83A598;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+	background: @memory;
+	color: @black;
 }
 
-#custom-check_updates {
-    color: #444444;
-    background-color: #269cb6;
-    /*border-radius: 0px 0px 16px 0px;*/
-    border-radius: 20px;
-    margin: 0px 0px 0px 0px;
-    padding: 0 10px 0 10px;
-    /*border-right: solid 1px #282738;*/
-    /*font-size: 16px;*/
-}
-
-
-#disk {
-    background-color: #444444;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+#cpu {
+	background: @cpu;
+	color: @white;
 }
 
 #temperature {
-    background-color: #444444;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
+	background: @temp;
+	color: @black;
 }
 
-#custom-hyprpicker {
-    background-color: #444444;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 11px 0px 9px;
+#language {
+	background: @layout;
+	color: @black;
 }
+
+#battery {
+	background: @battery;
+	color: @white;
+}
+
+#custom-check_updates {
+	background: @check_updates;
+	color: @white;
+}
+
+#custom-colorpicker {
+	background: @colorpicker;
+	color: @white;
+}
+
+#custom-screenshot {
+	background: @screenshot;
+	color: @white;
+}
+
+#custom-mic_status {
+	background: @mic_status;
+	color: @white;
+}
+
+#custom-recorder {
+	background: @recorder;
+	color: @white;
+}
+
+#tray {
+	background: @date;
+}
+
+#clock.date {
+	background: @date;
+	color: @white;
+}
+
+#clock.time {
+	background: @time;
+	color: @black;
+}
+
+#custom-arrow1 {
+	font-size: 11pt;
+	color: @time;
+	background: @date;
+}
+
+#custom-arrow2 {
+	font-size: 11pt;
+	color: @date;
+	background: @layout;
+}
+
+#custom-arrow3 {
+	font-size: 11pt;
+	color: @layout;
+	/*background: @check_updates;*/
+	background: @colorpicker;
+}
+
+#custom-arrow4 {
+	font-size: 11pt;
+	/*color: @check_updates;*/
+	color: @colorpicker;
+	background: @temp;
+}
+
+#custom-arrow5 {
+	font-size: 11pt;
+	color: @temp;
+	background: @cpu;
+}
+
+#custom-arrow6 {
+	font-size: 11pt;
+	color: @cpu;
+	background: @memory;
+}
+
+#custom-arrow7 {
+	font-size: 11pt;
+	color: @memory;
+	background: @network;
+}
+
+#custom-arrow8 {
+	font-size: 11pt;
+	color: @network;
+	background: @sound;
+}
+
+#custom-arrow9 {
+	font-size: 11pt;
+	color: @sound;
+	background: transparent;
+}
+
+#custom-arrow10 {
+	font-size: 11pt;
+	color: @unfocused;
+	background: transparent;
+}
+
+#custom-powermenu{
+	color: #fb4934;
+	background: transparent;
+	font-size: 11pt;
+}
+
