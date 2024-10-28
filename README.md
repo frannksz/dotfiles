@@ -1,2 +1,3 @@
-# dotfiles
-My Dotfiles config
+# My Hyprland WM
+
+<img src='Hyprland.png'>
