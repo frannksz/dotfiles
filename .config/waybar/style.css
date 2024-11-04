@@ -36,6 +36,7 @@
 @define-color braqua	#8ec07c;
 @define-color white	#ebdbb2;
 @define-color bg2	#504945;
+@define-color bg1   #0F121B;
 
 
 @define-color warning 	@bryellow;
@@ -56,7 +57,7 @@
 @define-color screenshot	@aqua;
 @define-color mic_status	@aqua;
 @define-color recorder	@aqua;
-@define-color date	#0F121B;
+@define-color date	@bg1;
 @define-color time	@white;
 
 /* Reset all styles */
@@ -257,6 +258,15 @@
 	font-size: 11pt;
 	color: @date;
 	background: @layout;
+}
+
+#custom-power {
+    padding-right: 5px;
+    background-color: rgba(200, 0, 0, 0.8);
+}
+
+#group-power {
+    margin-right: 15px;
 }
 
 #custom-arrow3 {
