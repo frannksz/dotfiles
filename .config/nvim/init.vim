@@ -44,11 +44,13 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' } "Telescope
 Plug 'nvim-telescope/telescope-file-browser.nvim' "Telescope-File-Browser
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "Nvim-Treesitter
 Plug 'terryma/vim-multiple-cursors' "Multiple Cursors
+Plug 'KabbAmine/vCoolor.vim'
+Plug 'ellisonleao/carbon-now.nvim'
 
 " =======================================================
 "                           THEMES
 " =======================================================
-Plug 'morhetz/gruvbox'
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'tanvirtin/monokai.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
@@ -72,7 +74,7 @@ call plug#end()
 " =======================================================
 "                       THEMES APLLY
 " =======================================================
-set bg=dark "litght (Tema Claro), dark (Tema Escuro)
+set bg=dark "light (Tema Claro), dark (Tema Escuro)
 "color onedark
 "color gruvbox
 "color nordic
@@ -181,7 +183,7 @@ map <C-m> :Mason<CR>
 map <C-b> :MinimapToggle<CR>
 map <C-q> :q!<CR>
 map <C-s> :w!<CR>
-"map <C-x> :s/$/
+map <C-x> :s/$/
 
 map <F8> :colorscheme wal<CR>
 map q :q<CR>
@@ -213,6 +215,12 @@ nnoremap <F3> :set relativenumber!<CR>
 "Telescope
 nnoremap <F5> :Telescope<CR>
 
+"Vcoolor
+nnoremap <F6> :VCoolor<CR>
+
+"Carbon
+nnoremap <F7> :CarbonNow<CR>
+
 "Desinstalar pacote mason
 nnoremap <C-u> :MasonUninstall<Space>
 
@@ -224,6 +232,8 @@ nmap c "+p
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+
+
 " =======================================================
 "                       LUA-PLUGINS
 " =======================================================
@@ -232,3 +242,4 @@ lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/colorizer.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/themery.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/dashboard.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/bufferline.lua')
+lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/carbon.lua')
