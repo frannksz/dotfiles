@@ -44,8 +44,10 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' } "Telescope
 Plug 'nvim-telescope/telescope-file-browser.nvim' "Telescope-File-Browser
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "Nvim-Treesitter
 Plug 'terryma/vim-multiple-cursors' "Multiple Cursors
-Plug 'KabbAmine/vCoolor.vim'
-Plug 'ellisonleao/carbon-now.nvim'
+Plug 'KabbAmine/vCoolor.vim' "Color GUI Neovim
+Plug 'ellisonleao/carbon-now.nvim' "CarbonCode
+Plug 'Djancyp/better-comments.nvim' "Bettercomments
+Plug 'DanilaMihailov/beacon.nvim' "Cursor-Effects
 
 " =======================================================
 "                           THEMES
@@ -242,4 +244,6 @@ lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/colorizer.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/themery.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/dashboard.lua')
 lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/bufferline.lua')
-lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/carbon.lua')
+lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/better-comments.lua')
+lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/cursor-effects.lua')
+"lua dofile(vim.fn.stdpath('config') .. '/lua-plugins/carbon.lua')
