@@ -8,8 +8,11 @@ if [ $(tty) = /dev/tty1 ]; then
       # wayland related
       export QT_QPA_PLATFORM=wayland
       export CLUTTER_BACKEND=wayland
-      export SDL_VIDEODRIVER=wayland
       export MOZ_ENABLE_WAYLAND=1
+      export ENABLE_VK_KHR_WAYLAND_SURFACE=1
+      export VK_ICD_FILENAMES=/etc/vulkan/icd.d/radeon_icd.x86_64.json
+      export VK_LAYER_PATH=/usr/share/vulkan/explicit_layer.d
+      export SDL_VIDEODRIVER=wayland
 
       # keyboard related
       export XKB_DEFAULT_LAYOUT='br'

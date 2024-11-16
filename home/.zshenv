@@ -1,3 +1,4 @@
+
 # Export bin
 export PATH="${PATH}:${HOME}/.local/bin/"
 
@@ -20,5 +21,10 @@ export UPDATE_ZSH_DAYS=13
 
 # Applications/Editor
 #export BROWSER="vimb"
-export BROWSER="qutebrowser"
+export BROWSER="firefox"
 export EDITOR="nvim"
+
+# VULKAN
+VK_DRIVER_FILES=/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json
+
+
