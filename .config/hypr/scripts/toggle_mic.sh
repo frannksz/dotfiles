@@ -14,7 +14,7 @@ if [[ "$mic_status" == *"yes"* ]]; then
     # Se estiver mutado, desmuta
     pactl set-source-mute "$mic_id" 0
     notify-send "Microfone Ativado"
-    echo "" > "$status_file"
+    echo "  " > "$status_file"
 else
     # Se estiver ativo, muta
     pactl set-source-mute "$mic_id" 1

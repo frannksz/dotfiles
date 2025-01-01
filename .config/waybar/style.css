@@ -36,7 +36,7 @@
 @define-color braqua	#8ec07c;
 @define-color white	#ebdbb2;
 @define-color bg2	#504945;
-@define-color bg1   #0F121B;
+@define-color bg1   #1D2021;
 
 
 @define-color warning 	@bryellow;
@@ -75,7 +75,7 @@
 /* The whole bar */
 #waybar {
 	/*background: rgba(40, 40, 40, 0.8784313725); [> #282828e0 <]*/
-	background: #0F101A;
+	background: #1D2021;
 	color: @white;
 	font-family: JetBrains Mono, Siji;
 	font-size: 10pt;
